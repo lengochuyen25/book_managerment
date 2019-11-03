@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Oreo's Book</title>
+
+    <style type="text/css">
+        footer{margin: 10px 0;}
+
+        #products {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        #products tbody{
+            box-shadow: 0px 2px 46.41px 4.59px rgba(2,38,113,0.08);
+        }
+        #products td, #products th {
+            border: 1px solid #fff;
+            border-right: 1px solid #dddddd42;
+            border-bottom: 1px solid #dddddd42;
+            padding: 8px;
+        }
+        #products td a {
+            text-decoration: none;
+            color: #252525;
+        }
+        #products td a:hover {
+            color: #f8d414;
+        }
+        #products tr:nth-child(even){background-color: #fff;}
+
+        #products tr:hover {background-color: #7ecabc0f;}
+
+        #products th {
+            padding: 15px 5px;
+            text-align: center;
+            background-color: #f8d414;
+            color: #fff;
+            font-weight: 400;
+            font-size: 15px;
+            border-right: 1px solid #fff;
+        }
+
+        input[type=text],input[type=email]{
+            width: 100%;
+            padding: 12px 0px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 300px;
+            background-color: #f7941d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        input[type=submit]:hover {
+            background-color: #d4e7f1;
+        }
+
+        #form {
+            width: 500px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        #message {font-size: 15px; color: blue;}
+    </style>
+</head>
+<body>
+
+<footer th:fragment="footer">
+    &copy; Bản quyền thuộc về Lê Ngọc Huyền
+</footer>
+</body>
+</html>

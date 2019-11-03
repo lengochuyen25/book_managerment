@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/product/layout :: head"></head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=vietnamese" rel="stylesheet">
+<body>
+<div class="top_header">
+</div>
+<div sec:authorize="isAnonymous()">
+    <a th:href="@{/login}" class="a_base">Đăng nhập</a>
+    <span class="span_title">Đăng nhập để được mua những sản phẩm của chúng tôi</span>
+</div>
+
+<form class="form_search">
+    <input name="s" class="search_input" type="text" placeholder="Nhập tên sách bạn muốn tìm kiếm ..."/>
+    <button type="submit" value="Tìm kiếm" class="search_button">Tìm kiếm</button>
+</form><br/>
+
+<table id="products">
+    <tr>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
+        <th>Hình ảnh</th>
+        <th>Mô tả</th>
+        <th>Tác giả</th>
+    </tr>
+
+
+    <th:block th:each="product:${products}">
+        <tr>
+            <td><p th:text="${product.name}"></p></td>
+            <td th:text="${product.price}"></td>
+            <td><img width="150px" height="150px" th:src="@{'/image/' + ${product.img}}"/></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.author.name}"></td>
+
+        </tr>
+    </th:block>
+
+
+</table>
+<div class="paginate">
+    <a th:href="@{'/'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Trang trước</a>
+    <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+    <a th:href="@{'/'(page=${products.number + 1})}" th:if="${products.hasNext()}">Trang sau</a>
+</div>
+<footer th:replace="/product/layout :: footer"></footer>
+<style>
+    body {
+        font-family: 'Roboto',sans-serif;
+        font-size: 14px;
+        color: #252525;
+        font-weight: 400;
+        text-align: center;
+        margin: 0;
+    }
+    .a_base {
+        font-size: 26px;
+        font-weight: 400;
+        color: #252525;
+        text-align: center;
+        margin-bottom: 25px;
+        text-decoration: none;
+        margin: 30px 0 10px 0;
+        display: block;
+        float: left;
+        width: 100%;
+    }
+    .a_base:hover {
+        color: #f8d414;
+    }
+    .form_search {
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .form_search input {
+        border: 1px solid #ebebeb;
+        border-radius: 3px;
+        background-color: #fff;
+        outline: none;
+    }
+    .span_title {
+        font-size: 14px;
+        color: #898989;
+    }
+    .top_header {
+        position: relative;
+        float: left;
+        width: 100%;
+        height: 92px;
+    }
+    .top_header:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 92px;
+        width: 100%;
+        background-image: url(//bizweb.dktcdn.net/100/355/156/themes/721189/assets/bg_banner_top.png?1564734883987);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .title_home {
+        font-family: 'Roboto',sans-serif;
+        font-size: 36px;
+        color: #fff;
+        font-weight: 400;
+        text-align: center;
+    }
+    .search_input {
+        display: inline-block !important;
+        width: 300px !important;
+        padding: 0 20px !important;
+        height: 40px;
+        line-height: 40px;
+    }
+    .search_button {
+        width: 150px !important;
+        background: #f8d414;
+        color: white;
+        padding: 0px 20px;
+        margin: 0px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-align: center;
+        height: 40px;
+    }
+    .search_button:hover {
+        background: #5fd768;
+    }
+    .paginate {
+        margin-top: 25px;
+    }
+    .paginate a {
+        color: #f8d414;
+        text-decoration: none;
+    }
+    footer {
+        position: relative;
+        float: left;
+        width: 100%;
+        margin: 0;
+        margin-top: 30px;
+        background: #252525;
+        color: #fff;
+        text-align: center;
+        padding: 30px 0;
+    }
+</style>
+</body>
+</html>
+

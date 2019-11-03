@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Author</title>
+</head>
+<body>
+<h1>Delete author</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/authors">Authors list</a>
+</p>
+<form th:action="@{/delete-author}" th:object="${author}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${author.name}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete author"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
